@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react"
 
 const Data = () => (
-    <div>
-        <p>Test Data</p>
-    </div>
+  <div>
+    <p>Test Data</p>
+  </div>
 )
 
-export default Data;
+export default Data
