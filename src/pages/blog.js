@@ -7,35 +7,27 @@ import { node } from "prop-types"
 const Blog = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark {
+      allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
         edges {
           node {
-            frontmatter {
-              title
-              Date
-            }
-            html
-            fields {
-              slug
-            }
+            title
+            publishedDate(formatString: "MMMM Do, YYYY")
+            slug
           }
         }
       }
     }
   `)
-  console.log(data)
   return (
     <Layout>
       <h1>Blog Page</h1>
-
       <ol>
-        {data.allMarkdownRemark.edges.map((post, i) => {
+        {data.allContentfulBlogPost.edges.map((post, i) => {
           return (
-            <Link to={`/blog/${post.node.fields.slug}`}>
-              <li key={i}>
-                <h2>{post.node.frontmatter.title}</h2>
-                <p>{post.node.frontmatter.Date}</p>
-                {post.node.html}
+            <Link to={`/blog/${post.node.slug}`} key={i}>
+              <li>
+                <h2>{post.node.title}</h2>
+                <p>{post.node.publishedDate}</p>
               </li>
             </Link>
           )

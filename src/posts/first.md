@@ -1,9 +1,11 @@
 ---
 title: 'My first post'
-Date: '10/25/2019'
+date: '10/25/2019'
 ---
 
 I just launched my blog!
+
+![Pumpkin]('./../test.jpg)
 
 ## Topics Covered 
 
